@@ -1,0 +1,27 @@
+.grid-container {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  gap: 5px;
+  padding: 5px;
+}
+
+.grid-item {
+  text-transform: capitalize;
+  background-color: rgb(143, 186, 217);
+  text-align: center;
+}
+
+.location-name {
+  text-align: center;
+  background-color: rgb(143, 186, 217);
+  margin: auto;
+  padding: 10px;
+  width: 590px;
+}
+
+.search-container button {
+  border: none;
+  cursor: pointer;
+  background-color: green;
+}

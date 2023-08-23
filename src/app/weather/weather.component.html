@@ -1,0 +1,26 @@
+<div *ngIf="weatherData != null">
+
+  <div class="location-name">
+    <p>{{weatherData.city.name}}</p>
+    <div class="search-container" [formGroup]="form">
+      <input type="text" formControlName="search" placeholder="Search.." name="search">
+      <button (click)="search()">HI!</button>
+    </div>
+  </div>
+
+  <div class="grid-container" *ngFor="let item of  weatherData.list">
+
+    <div class="grid-item">
+      <img src="http://openweathermap.org/img/w/{{item.weather[0].icon}}.png" width="70" height="70">
+    </div>
+
+    <div class="grid-item">
+      <p>{{item.main.temp}}℃</p>
+      <p>{{item.weather[0].description}}</p>
+    </div>
+
+    <div class="grid-item">
+      <p>{{convertToDate(item.dt)}}</p>
+    </div>
+  </div>
+</div>
