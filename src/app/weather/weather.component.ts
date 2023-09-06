@@ -19,14 +19,14 @@ export class WeatherComponent {
     });
   }
 
-  convertToDate = (timestamp: number): string => {
-    let time = new Date();
+  convertToDate = (timestamp: number) :string => {
+    let time :Date = new Date();
     time.setTime(timestamp * 1000);
     return time.toUTCString();
   }
 
 
-  search() {
+  search() :void {
     const search = this.form.value.search;
     if (search !== '') {
       this.weatherService.checkWeatherCity(this.form.value.search).subscribe((data: any) => this.weatherData = data);

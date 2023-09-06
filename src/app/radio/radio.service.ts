@@ -29,21 +29,24 @@ export class RadioService {
       name: "longtail",
       url: "http://playertest.longtailvideo.com/adaptive/wowzaid3/playlist.m3u8"
     },
-    { name: "apple",
+    {
+      name: "apple",
       url: "http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8"
     },
-    { name: "afcdn",
+    {
+      name: "afcdn",
       url: "https://assets.afcdn.com/video49/20210722/v_645516.m3u8"
     },
-    { name: "",
+    {
+      name: "",
       url: ""
     },
   ];
 
   private hls: Hls;
   private audio: HTMLAudioElement;
-  playing = true;
-  chanel = 0;
+  playing :boolean = true;
+  chanel:number = 0;
 
   constructor() {
     this.hls = new Hls();

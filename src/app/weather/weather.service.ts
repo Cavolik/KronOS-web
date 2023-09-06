@@ -6,10 +6,8 @@ import {concatMap, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class WeatherService {
-  apiKey = "d725865082eefb161072b2552d21b286";
-  apiUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metric";
-
-  weather: any = {};
+  apiKey :string = "d725865082eefb161072b2552d21b286";
+  apiUrl :string = "https://api.openweathermap.org/data/2.5/forecast?units=metric";
 
   constructor(private http: HttpClient) {
   }
@@ -38,14 +36,14 @@ export class WeatherService {
     return this.http.get(`${this.apiUrl}&appid=${this.apiKey}&lat=${lat}&lon=${lon}`);
   }
   private getLocation = () => {
-    return new Observable((observer) => {
+    return new Observable((observer) :void => {
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(
-          (position) => {
+          (position) :void => {
             observer.next(position);
             observer.complete();
           },
-          (error) => {
+          (error) :void => {
             observer.error(error);
           }
         )

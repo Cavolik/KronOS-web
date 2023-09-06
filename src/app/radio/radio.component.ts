@@ -14,15 +14,15 @@ export class RadioComponent {
     this.playing = this.radio.playing;
   }
 
-  playPause = () => {
+  playPause = () :void => {
     this.radio.playPause();
     this.playing = this.radio.playing;
   }
-    chanelHigher = () => {
+    chanelHigher = () :void => {
     this.name = this.radio.chanelHigher();
   }
 
-  chanelLower = () => {
+  chanelLower = () :void => {
     this.name = this.radio.chanelLower();
   }
 }
