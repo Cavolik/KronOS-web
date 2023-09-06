@@ -1,2 +1,207 @@
-/* You can add global styles to this file, and also import other style files */
 @import "node_modules/normalize.css";
+
+@font-face {
+  font-family: sevenSegment;
+  src: url("assets/Seven.ttf") format("opentype");
+}
+
+body {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.frame {
+  display: flex;
+  position: fixed;
+  background-color: rgb(89,131,176);
+  top: 0;
+  left: 50%;
+  margin-inline: -20vw;
+  width: 40vw;
+}
+
+.clockFrame {
+  display:flex;
+  background-color: black;
+  margin: 0.5rem -8.5rem 0.5rem 0.5rem;
+  padding: 1rem 0.7rem;
+  min-width: 6.8rem;
+  height: 2.2rem;
+}
+
+.clock {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'sevenSegment', 'arial', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: green;
+}
+
+.radio {
+  width: 50vw;
+  height: 15vh;
+}
+
+.weather {
+  margin-top: 16vh;
+}
+
+.changeLowerButton {
+  transform: scaleX(-1);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.playButton{
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+  border: none;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-bottom: 1vh;
+  cursor: pointer;
+}
+
+.changeHigherButton{
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.grid-container {
+  display:grid;
+  grid-template-columns: 10vw 10vw 10vw;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+}
+
+.grid-item {
+  text-transform: capitalize;
+  background-color: rgb(143, 186, 217);
+}
+
+.location-name {
+  display: grid;
+  grid-template-columns: 31vw;
+  justify-content: center;
+  background-color: rgb(143, 186, 217);
+  margin-inline: 32%;
+  margin-bottom: 0.25rem;
+  padding: 0.5vw;
+}
+
+.search-container input {
+  width: 15vw;
+  border: none;
+}
+
+.search-container button {
+  border: none;
+  cursor: pointer;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 50%;
+  height: 3px;
+  border-radius: 50px;
+  background: #000000;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  cursor: pointer;
+}
+
+.error {
+  display: none;
+  padding-block: 50%;
+  background-color: brown;
+  color: white;
+}
+
+@media (max-height: 300px) or (max-width: 279px){
+  .error {
+    display: block;
+  }
+
+  .frame {
+    display: none;
+  }
+
+  .weather {
+    display: none;
+  }
+}
+
+@media (max-width: 1140px) {
+  .frame {
+    width: 70vw;
+    margin-inline: -35vw;
+  }
+
+  .clockFrame {
+    margin-right: -3rem;
+  }
+
+  .location-name {
+    width: 65vw;
+    margin-inline: 17%;
+  }
+
+  .grid-container {
+    grid-template-columns: 20vw 20vw 20vw;
+  }
+
+  .search-container {
+    width: 60vw;
+    margin-inline: -50%;
+  }
+
+  .search-container input {
+    width: 30vw;
+  }
+}
+
+@media (max-width: 680px) {
+  .frame {
+    width: 100%;
+    margin-inline: -50%;
+  }
+
+  .clockFrame {
+    margin: 0.5rem;
+  }
+
+  .location-name{
+    width: 95%;
+    margin-inline: 2%;
+  }
+
+  .grid-container {
+    grid-template-columns: 30% 30% 30%;
+  }
+
+  .search-container {
+    width: 80vw;
+    margin-inline: -70%;
+  }
+
+  .search-container input {
+    width: 50vw;
+  }
+}

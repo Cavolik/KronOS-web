@@ -1,2 +1,15 @@
-<div><router-outlet></router-outlet></div>
-<div class="radio"><app-radio></app-radio></div>
+<div class="error">
+  <p>Skill issue!</p>
+</div>
+<div class="frame">
+  <div class="clockFrame">
+    <app-clock></app-clock>
+  </div>
+  <div class="radio">
+    <app-radio></app-radio>
+    <app-volume></app-volume>
+  </div>
+</div>
+<div class="weather">
+  <router-outlet></router-outlet>
+</div>
