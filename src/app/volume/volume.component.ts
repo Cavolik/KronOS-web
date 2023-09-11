@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { RadioService } from "../radio/radio.service";
 
 @Component({
   selector: 'app-volume',
@@ -9,8 +10,11 @@ export class VolumeComponent {
   volumeValue: number = 50;
   volumeOutput: number = 0.5;
 
-  updateVolumeValue() :void {
-    this.volumeOutput = this.volumeValue/100;
-    console.log('Volume:', this.volumeOutput);
+  constructor(private radio: RadioService) {
+  }
+
+  updateVolumeValue(): void {
+    this.volumeOutput = this.volumeValue / 100;
+    this.radio.setAudioLevel(this.volumeOutput);
   }
 }

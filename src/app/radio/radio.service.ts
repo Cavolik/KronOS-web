@@ -71,11 +71,16 @@ export class RadioService {
     return this.audioSrc;
   }
 
+  setAudioLevel = (level: number)=>{
+    this.audio.volume = level;
+  }
   private changeChannel = (audioSrc: string) => {
     this.playPause();
     this.hls.loadSource(audioSrc)
     this.hls.attachMedia(this.audio);
     this.playPause();
   }
+
+
 
 }

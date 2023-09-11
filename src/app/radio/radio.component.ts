@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { RadioService } from "./radio.service";
 
 @Component({
@@ -6,7 +6,7 @@ import { RadioService } from "./radio.service";
   templateUrl: './radio.component.html',
   styleUrls: ['./radio.component.css']
 })
-export class RadioComponent  {
+export class RadioComponent {
   playListName: string = "";
   playing: boolean = false;
 
@@ -14,6 +14,7 @@ export class RadioComponent  {
     this.playListName = this.radio.getPlayList()[0].name;
     this.playing = this.radio.playing;
   }
+
   playPause = (): void => {
     this.radio.playPause();
     this.playing = this.radio.playing;
