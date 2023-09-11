@@ -1,4 +1,6 @@
-<p class="songTitle">Now playing <br>{{name}}</p>
-<button class="changeLowerButton" (click)="chanelLower()"><img ngSrc="assets/ChanelButton.png" alt="Right" height="24" width="22"></button>
-<button class="playButton" (click)="playPause()">{{(!playing)?"playing":"paused"}}</button>
-<button class="changeHigherButton" (click)="chanelHigher()"><img ngSrc="assets/ChanelButton.png" alt="Left" height="24" width="22"></button>
+<p class="songTitle">Now playing <br>{{playListName}}</p>
+<button class="changeLowerButton" (click)="channelDown()"><img ngSrc="assets/ChanelButton.png" alt="Right" height="24"
+                                                               width="22"></button>
+<button class="playButton" (click)="playPause()">{{(playing) ? "playing" : "paused"}}</button>
+<button class="changeHigherButton" (click)="channelUp()"><img ngSrc="assets/ChanelButton.png" alt="Left" height="24"
+                                                              width="22"></button>

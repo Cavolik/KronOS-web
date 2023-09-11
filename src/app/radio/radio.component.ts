@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {RadioService} from "./radio.service";
+import { Component } from '@angular/core';
+import { RadioService } from "./radio.service";
 
 @Component({
   selector: 'app-radio',
@@ -7,22 +7,23 @@ import {RadioService} from "./radio.service";
   styleUrls: ['./radio.component.css']
 })
 export class RadioComponent {
-  name: string = "";
+  playListName: string = "";
   playing: boolean = false;
+
   constructor(private radio: RadioService) {
-    this.name = this.radio.getPlayList()[0].name;
+    this.playListName = this.radio.getPlayList()[0].name;
     this.playing = this.radio.playing;
   }
 
-  playPause = () :void => {
+  playPause = (): void => {
     this.radio.playPause();
     this.playing = this.radio.playing;
   }
-    chanelHigher = () :void => {
-    this.name = this.radio.chanelHigher();
+  channelUp = (): void => {
+    this.playListName = this.radio.channelUp();
   }
 
-  chanelLower = () :void => {
-    this.name = this.radio.chanelLower();
+  channelDown = (): void => {
+    this.playListName = this.radio.channelDown();
   }
 }
