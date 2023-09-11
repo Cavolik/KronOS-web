@@ -1,6 +1,5 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import Hls from "hls.js";
-import {reportUnhandledError} from "rxjs/internal/util/reportUnhandledError";
 
 type PlayList = {
   name: string;
@@ -36,56 +35,47 @@ export class RadioService {
     {
       name: "afcdn",
       url: "https://assets.afcdn.com/video49/20210722/v_645516.m3u8"
-    },
-    {
-      name: "",
-      url: ""
-    },
+    }
   ];
 
   private hls: Hls;
-  private audio: HTMLAudioElement;
-  playing :boolean = true;
-  chanel:number = 0;
+  private readonly audio: HTMLAudioElement;
+  playing: boolean = false;
+  channel: number = 0;
 
   constructor() {
     this.hls = new Hls();
     this.audio = new Audio();
-    this.hls.loadSource(this.audioSrc[this.chanel].url);
+    this.hls.loadSource(this.audioSrc[this.channel].url);
     this.hls.attachMedia(this.audio);
   }
 
   playPause = () => {
-    if (this.playing){
-      void this.audio.play()
-    } else {
-      void this.audio.pause()
-    }
+    (this.playing) ? this.audio.pause():this.audio.play();
     this.playing = !this.playing;
-    console.log(this.playing);
   }
 
-  chanelLower = () => {
-    this.chanel --;
-    if (this.chanel < 0) {
-      this.chanel = this.audioSrc.length - 1;
-    }
-    this.hls.loadSource(this.audioSrc[this.chanel].url)
-    this.hls.attachMedia(this.audio);
-    return this.audioSrc[this.chanel].name;
+  channelDown = () => {
+    this.channel = (this.channel - 1 + this.audioSrc.length) % this.audioSrc.length;
+    this.changeChannel(this.audioSrc[this.channel].url);
+    return this.audioSrc[this.channel].name;
   }
 
-  chanelHigher = () => {
-    this.chanel ++;
-    if (this.chanel > this.audioSrc.length - 1) {
-      this.chanel = 0;
-    }
-    this.hls.loadSource(this.audioSrc[this.chanel].url)
-    this.hls.attachMedia(this.audio);
-    return this.audioSrc[this.chanel].name;
+  channelUp = () => {
+    this.channel = (this.channel + 1 + this.audioSrc.length) % this.audioSrc.length;
+    this.changeChannel(this.audioSrc[this.channel].url);
+    return this.audioSrc[this.channel].name;
   }
 
   getPlayList = () => {
     return this.audioSrc;
   }
+
+  private changeChannel = (audioSrc: string) => {
+    this.playPause();
+    this.hls.loadSource(audioSrc)
+    this.hls.attachMedia(this.audio);
+    this.playPause();
+  }
+
 }
