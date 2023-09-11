@@ -11,6 +11,7 @@ export class VolumeComponent {
   volumeOutput: number = 0.5;
 
   constructor(private radio: RadioService) {
+    this.updateVolumeValue();
   }
 
   updateVolumeValue(): void {
